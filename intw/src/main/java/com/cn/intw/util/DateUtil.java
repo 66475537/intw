@@ -1,4 +1,4 @@
-package com.cn.hsd.rm.util;
+package com.cn.intw.util;
 
 
 import java.text.ParseException;

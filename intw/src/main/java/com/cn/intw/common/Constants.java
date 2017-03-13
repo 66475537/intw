@@ -1,4 +1,4 @@
-package com.cn.hsd.rm.common.constant;
+package com.cn.intw.common;
 
 public interface Constants {
 	

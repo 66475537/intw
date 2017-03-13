@@ -1,4 +1,4 @@
-package com.cn.hsd.rm.common.model;
+package com.cn.intw.common;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

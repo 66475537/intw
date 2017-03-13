@@ -1,12 +1,12 @@
-package com.cn.hsd.rm.common.interceptor;
+package com.cn.intw.common;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import com.cn.hsd.rm.common.constant.Constants;
 
 /**
  * 用户登陆拦截器

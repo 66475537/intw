@@ -1,4 +1,4 @@
-package com.cn.hsd.rm.common.filter;
+package com.cn.intw.common;
 
 import java.io.IOException;
 import javax.servlet.Filter;
