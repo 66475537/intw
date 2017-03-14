@@ -11,4 +11,11 @@ public class UrlConnection {
 	public static String airPortUrl = "http://www.pre-flight.cn/WebHome/GetAirport";
 	
 	
+	public static String aircraftInfoUrl = "http://www.pre-flight.cn/WebHome/Get";
+	
+	
+	public static String getAirline = "http://www.pre-flight.cn/WebHome/GetAirline";
+	
+	
+	public static String getCityPairTime = "http://www.pre-flight.cn/WebHome/GetCityPairTime";
 }

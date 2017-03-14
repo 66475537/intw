@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2017-02-09 13:12:22</creation_date>
-			<updated_date>2017-03-13 21:03:01</updated_date>
+			<updated_date>2017-03-14 21:56:36</updated_date>
 			<model_property>
 				<name>Project Name</name>
 				<value></value>
@@ -326,8 +326,8 @@
 			<width>220</width>
 				<font_name>.SF NS Text</font_name>
 				<font_size>9</font_size>
-			<x>165</x>
-			<y>141</y>
+			<x>132</x>
+			<y>132</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
