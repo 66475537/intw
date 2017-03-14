@@ -27,13 +27,7 @@ public class Airport {
 	
 	
 	public static List<Airport> getAllAirPort(){
-		/**
-		 *  *  page: 1, //当前页
-		rows: 20, //每页显示多少
-		pageSize: 0, //总条数
-		AllPage: 0 //总共多少页	
-		10803,11105,11448,11857,12058
-		 */
+		
 		List<Airport> protList = new ArrayList<Airport>();
 		
 		int i = 0;
@@ -41,11 +35,18 @@ public class Airport {
 		
 		while(i==0||protList1.size()>0){
 			i++;
+			/**
+			 *  *  page: 1, //当前页
+			rows: 20, //每页显示多少
+			pageSize: 0, //总条数
+			AllPage: 0 //总共多少页	
+			10803,11105,11448,11857,12058
+			 */
 			String str = HttpClientUtil.httpPost(UrlConnection.airPortUrl, "page="+i+"&rows=500&pageSize=0&AllPage=0", false);
 			protList1 = JSON.parseArray(str, Airport.class);
 			protList.addAll(protList1);
 		}
-		System.out.println(protList.size());
+//		System.out.println(protList.size());
 		return protList;
 	}
 	
