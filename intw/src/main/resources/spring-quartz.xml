@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- 工作的bean -->
+	<bean id="jobBean" class="com.cn.intw.quartz.JobBean" />
+    
+    
+    <!--要调度的对象-->
+    <bean id="aircraftInfoJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="jobBean" />
+        <property name="targetMethod" value="syncAircraftInfo" /><!-- 执行"jobBean"中的execute方法 -->
+        <!--将并发设置为false-->
+        <property name="concurrent" value="false" />
+    </bean>
+    <bean id="aircraftInfoJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"><!-- 定义 Job 何时执行 -->
+        <property name="jobDetail" ref="aircraftInfoJobDetail" />
+        <!--表达式，我的是每 3s 执行一次-->
+        <property name="cronExpression" value="0/30 * * * * ?" /><!-- “ 0 0 12 * * ? ”会在每天中午 12 点触发 执行；“ 0 15 10 ? * 6L ”会在每个月的最后一个星期五的早上 10:15 触发 Job 执行 -->
+    </bean>
+    
+    
+    <!--要调度的对象-->
+    <bean id="syncCityPairTimeJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="jobBean" />
+        <property name="targetMethod" value="syncCityPairTime" /><!-- 执行"jobBean"中的execute方法 -->
+        <!--将并发设置为false-->
+        <property name="concurrent" value="false" />
+    </bean>
+    <bean id="syncCityPairTimeJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"><!-- 定义 Job 何时执行 -->
+        <property name="jobDetail" ref="syncCityPairTimeJobDetail" />
+        <!--表达式，我的是每 3s 执行一次-->
+        <property name="cronExpression" value="0/40 * * * * ?" /><!-- “ 0 0 12 * * ? ”会在每天中午 12 点触发 执行；“ 0 15 10 ? * 6L ”会在每个月的最后一个星期五的早上 10:15 触发 Job 执行 -->
+    </bean>
+    
+    
+    
+    <!--要调度的对象-->
+    <bean id="syncAirportJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="jobBean" />
+        <property name="targetMethod" value="syncAirport" /><!-- 执行"jobBean"中的execute方法 -->
+        <!--将并发设置为false-->
+        <property name="concurrent" value="false" />
+    </bean>
+    <bean id="syncAirportJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"><!-- 定义 Job 何时执行 -->
+        <property name="jobDetail" ref="syncAirportJobDetail" />
+        <!--表达式，我的是每 3s 执行一次-->
+        <property name="cronExpression" value="0/50 * * * * ?" /><!-- “ 0 0 12 * * ? ”会在每天中午 12 点触发 执行；“ 0 15 10 ? * 6L ”会在每个月的最后一个星期五的早上 10:15 触发 Job 执行 -->
+    </bean>
+    
+    
+    
+    <!--要调度的对象-->
+    <bean id="syncAirlineInfoJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="jobBean" />
+        <property name="targetMethod" value="syncAirlineInfo" /><!-- 执行"jobBean"中的execute方法 -->
+        <!--将并发设置为false-->
+        <property name="concurrent" value="false" />
+    </bean>
+    <bean id="syncAirlineInfoJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"><!-- 定义 Job 何时执行 -->
+        <property name="jobDetail" ref="syncAirlineInfoJobDetail" />
+        <!--表达式，我的是每 3s 执行一次-->
+        <property name="cronExpression" value="0/50 * * * * ?" /><!-- “ 0 0 12 * * ? ”会在每天中午 12 点触发 执行；“ 0 15 10 ? * 6L ”会在每个月的最后一个星期五的早上 10:15 触发 Job 执行 -->
+    </bean>
+    
+    
+
+    <!--  总管理类如果将lazy-init='false'那么容器启动就会执行调度程序   -->
+    <bean id="startQuertz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false" >
+        <property name="triggers">
+            <list>
+                <!--作业调度器,list下可加入其他的调度器-->
+                <ref bean="aircraftInfoJobTrigger" />
+                <ref bean="syncCityPairTimeJobTrigger" />
+                <ref bean="syncAirportJobTrigger" />
+                <ref bean="syncAirlineInfoJobTrigger" />
+            </list>
+        </property>
+    </bean>
+
+</beans>
