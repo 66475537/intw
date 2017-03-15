@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.intw.sync.dao.ISyncMapping">
+
+	<insert id="addAircraftInfoBatch" parameterType="java.util.List">
+	insert into AIRCRAFTINFO(ID,THREECODE,LONGNAME,ACLEVEL,SEATS,SPEED,ACTYPE,APTIME,CITYPAIRACTYPE,PICKOUTTIME,OTHERTIME) values  
+	 <foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.ID},#{item.ThreeCode},#{item.Longname},#{item.Aclevel},#{item.Seats},#{item.Speed},#{item.Actype},#{item.Aptime}
+        ,#{item.citypairactype},#{item.PickOutTime},#{item.OtherTime})  
+    </foreach>
+	</insert>
+
+</mapper>  
