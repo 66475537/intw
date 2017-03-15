@@ -1,4 +1,4 @@
-package com.cn.intw.domain;
+package com.cn.intw.sync.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
