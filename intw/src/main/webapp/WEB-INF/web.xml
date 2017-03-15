@@ -37,7 +37,7 @@
     <!-- Path -->
 	<filter>
 	  	<filter-name>pathFilter</filter-name>
-	  	<filter-class>com.cn.hsd.rm.common.filter.PathFilter</filter-class>
+	  	<filter-class>com.cn.intw.common.PathFilter</filter-class>
 	</filter>
 	<filter-mapping>
 	    <filter-name>pathFilter</filter-name>
