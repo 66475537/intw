@@ -3,7 +3,6 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cn.intw.sync.dao.ISyncMapping">
-
 	<insert id="addAircraftInfoBatch" parameterType="java.util.List">
 	insert into AIRCRAFTINFO(ID,THREECODE,LONGNAME,ACLEVEL,SEATS,SPEED,ACTYPE,APTIME,CITYPAIRACTYPE,PICKOUTTIME,OTHERTIME) values  
 	 <foreach collection="list" item="item" index="index" separator="," >  
@@ -11,5 +10,48 @@
         ,#{item.citypairactype},#{item.PickOutTime},#{item.OtherTime})  
     </foreach>
 	</insert>
+	
+	<delete id="deleteAircraftInfo">
+		delete from AIRCRAFTINFO
+	</delete>
+	
+	
+	<insert id="addAirlineInfoBatch" parameterType="java.util.List">
+	insert into AIRCRAFTINFO(ID,TWO_CODE,THREE_CODE,CH_NAME,EN_NAME,CH_NAME_SHORT,BASECODE,ISEDITLOGINNAME) values  
+	 <foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.ID},#{item.TWO_CODE},#{item.THREE_CODE},#{item.CH_NAME},#{item.EN_NAME},#{item.CH_NAME_SHORT},#{item.BASECODE},#{item.IsEditLoginName})  
+    </foreach>
+	</insert>
 
+
+	<delete id="deleteAirlineInfo">
+		delete from AIRLINEINFO
+	</delete>
+	
+	
+	
+
+	
+	<insert id="addAirPort" parameterType="java.util.List">
+	insert into AIRPORT() values  
+	 <foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.ID})  
+    </foreach>
+	</insert>
+	
+	<delete id="deleteAirPort">
+		delete from AIRPORT
+	</delete>
+	
+	
+	<insert id="addCityPairTimeBatch" parameterType="java.util.List">
+	insert into CITYPAIRTIME() values  
+	 <foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.ID})  
+    </foreach>
+	</insert>
+	
+	<delete id="deleteCityPairTime">
+		delete from CITYPAIRTIME
+	</delete>
 </mapper>  

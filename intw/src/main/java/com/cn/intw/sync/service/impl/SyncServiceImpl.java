@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.cn.intw.sync.dao.ISyncMapping;
 import com.cn.intw.sync.domain.AircraftInfo;
+import com.cn.intw.sync.domain.AirlineInfo;
+import com.cn.intw.sync.domain.Airport;
+import com.cn.intw.sync.domain.CityPairTime;
 import com.cn.intw.sync.service.ISyncService;
 
 @Service
@@ -18,26 +21,40 @@ public class SyncServiceImpl implements ISyncService{
 
 	@Override
 	public void syncAircraftInfo() {
+		
 		List<AircraftInfo> aircraftInfoList = AircraftInfo.getAllAircraftInfo();
+		syncMapper.deleteAircraftInfo();
 		syncMapper.addAircraftInfoBatch(aircraftInfoList);
+		System.out.println("......syncAircraftInfo end .........");
 	}
 
 	@Override
 	public void syncAirlineInfo() {
-		// TODO Auto-generated method stub
+		List<AirlineInfo> airLine = AirlineInfo.getAllAircraftInfo();
+		syncMapper.deleteAirlineInfo();
+		syncMapper.addAirlineInfoBatch(airLine);
 		
+		System.out.println("......syncAirlineInfo end .........");
 	}
 
 	@Override
 	public void syncAirport() {
-		// TODO Auto-generated method stub
+		List<Airport> list = Airport.getAllAirPort();
+		syncMapper.deleteAirPort();
 		
+		syncMapper.addAirPort(list);
+		
+		System.out.println("......syncAirport end .........");
 	}
 
 	@Override
 	public void syncCityPairTime() {
-		// TODO Auto-generated method stub
+		List<CityPairTime> list = CityPairTime.getAllAircraftInfo();
+		syncMapper.deleteCityPairTime();
 		
+		syncMapper.addCityPairTimeBatch(list);
+		
+		System.out.println("......syncAirlineInfo end .........");
 	}
 
 }
